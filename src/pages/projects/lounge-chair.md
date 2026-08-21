@@ -2,7 +2,9 @@
 layout: "../../layouts/ProjectLayout.astro"
 title: "Bespoke Oak Lounge Chair"
 category: "Furniture"
-image: "https://images.unsplash.com/photo-1505843490538-5133c6c7d0e1?w=800&q=80"
+image: "https://images.unsplash.com/photo-1567016432779-094069958ea5?w=1200&q=80&auto=format"
 ---
 
-Crafted from solid reclaimed oak with mortise and tenon joinery. This piece focuses on ergonomic structure while highlighting the natural grain of the timber.
+PLACEHOLDER PROJECT COPY — replace with real project photos and description.
+
+Crafted from solid reclaimed oak with mortise and tenon joinery, this piece focuses on ergonomic structure while highlighting the natural grain of the timber.

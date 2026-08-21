@@ -1,1 +1,81 @@
 @import "tailwindcss";
+
+@theme {
+  --font-display: "Fraunces", "Georgia", serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #211E1A;
+  --color-ink-soft: #4A453E;
+  --color-plaster: #E9E3D6;
+  --color-plaster-dim: #DFD8C7;
+  --color-paper: #F6F3EC;
+  --color-moss: #656B4E;
+  --color-moss-dim: #545942;
+  --color-brass: #A9865A;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+  }
+
+  ::selection {
+    background-color: var(--color-moss);
+    color: var(--color-paper);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-moss);
+    outline-offset: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer utilities {
+  .joint-frame {
+    position: relative;
+  }
+  .joint-frame::before,
+  .joint-frame::after {
+    content: "";
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border-color: var(--color-brass);
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: none;
+  }
+  .joint-frame::before {
+    top: -8px;
+    left: -8px;
+    border-top: 1.5px solid var(--color-brass);
+    border-left: 1.5px solid var(--color-brass);
+    transform: translate(6px, 6px);
+  }
+  .joint-frame::after {
+    bottom: -8px;
+    right: -8px;
+    border-bottom: 1.5px solid var(--color-brass);
+    border-right: 1.5px solid var(--color-brass);
+    transform: translate(-6px, -6px);
+  }
+  .joint-frame:hover::before,
+  .joint-frame:hover::after {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}

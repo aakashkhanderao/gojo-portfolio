@@ -1,0 +1,77 @@
+---
+import "../styles/global.css";
+import Logo from "../components/Logo.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+const {
+  title,
+  description = "GOJO Designs — bespoke furniture and interior design.",
+} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,600;1,9..144,450&family=Inter:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="font-sans antialiased bg-paper text-ink">
+    <header class="sticky top-0 z-40 bg-paper/90 backdrop-blur-sm border-b border-ink/10">
+      <nav class="max-w-6xl mx-auto px-6 md:px-8 h-20 flex items-center justify-between">
+        <a href="/" class="text-ink hover:opacity-70 transition-opacity">
+          <Logo />
+        </a>
+        <div class="hidden md:flex items-center gap-10 text-[0.8rem] tracking-[0.12em] uppercase">
+          <a href="/#work" class="hover:text-moss transition-colors">Work</a>
+          <a href="/#studio" class="hover:text-moss transition-colors">Studio</a>
+          <a href="/#contact" class="hover:text-moss transition-colors">Contact</a>
+        </div>
+        <a
+          href="/#contact"
+          class="text-[0.8rem] tracking-[0.1em] uppercase border border-ink px-4 py-2 hover:bg-ink hover:text-paper transition-colors"
+        >
+          Enquire
+        </a>
+      </nav>
+    </header>
+
+    <slot />
+
+    <footer class="border-t border-ink/10 mt-32">
+      <div class="max-w-6xl mx-auto px-6 md:px-8 py-14 flex flex-col md:flex-row justify-between gap-8 items-start">
+        <div>
+          <a href="/" class="text-ink"><Logo /></a>
+          <p class="mt-4 text-sm text-ink-soft max-w-xs">
+            Bespoke furniture and interior design, built around how a room is actually lived in.
+          </p>
+        </div>
+        <div class="flex gap-16 text-sm">
+          <div>
+            <p class="uppercase tracking-[0.12em] text-xs text-ink-soft mb-3">Contact</p>
+            <a href="mailto:gauricj@gojodesigns.com" class="block hover:text-moss transition-colors">gauricj@gojodesigns.com</a>
+            <a href="tel:+91-9004255161" class="block hover:text-moss transition-colors mt-1">+91-9004255161</a>
+          </div>
+          <div>
+            <p class="uppercase tracking-[0.12em] text-xs text-ink-soft mb-3">Follow</p>
+            <a href="#" class="block hover:text-moss transition-colors">Instagram</a>
+            <a href="#" class="block hover:text-moss transition-colors mt-1">Pinterest</a>
+          </div>
+        </div>
+      </div>
+      <div class="max-w-6xl mx-auto px-6 md:px-8 pb-10 text-xs text-ink-soft">
+        © {new Date().getFullYear()} GOJO Designs. All rights reserved.
+      </div>
+    </footer>
+  </body>
+</html>

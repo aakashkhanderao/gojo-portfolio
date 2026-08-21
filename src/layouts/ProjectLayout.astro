@@ -1,47 +1,27 @@
 ---
-import '../styles/global.css';
+import SiteLayout from "./SiteLayout.astro";
 
-// This pulls the frontmatter data from whichever Markdown file is using this layout
 const { frontmatter } = Astro.props;
 ---
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>{frontmatter.title} | Studio Name</title>
-  </head>
-  <body class="bg-zinc-50 text-zinc-900 font-sans antialiased">
-    
-    <!-- Navigation (Includes a link back to Home) -->
-    <nav class="p-6 border-b border-zinc-200 flex justify-between items-center">
-      <a href="/" class="text-2xl font-bold tracking-tighter hover:text-zinc-500 transition-colors">STUDIO NAME</a>
-      <a href="mailto:hello@studio.com" class="text-sm font-medium hover:text-zinc-500 transition-colors">Contact</a>
-    </nav>
+<SiteLayout title={`${frontmatter.title} — GOJO Designs`}>
+  <main class="max-w-5xl mx-auto px-6 md:px-8 py-16 md:py-20">
+    <a href="/#work" class="inline-flex items-center gap-2 text-sm text-ink-soft hover:text-ink transition-colors mb-10">
+      &larr; Back to Work
+    </a>
 
-    <!-- Product Detail Section -->
-    <main class="max-w-5xl mx-auto px-6 py-16">
-      
-      <!-- Header block -->
-      <div class="mb-10">
-        <a href="/" class="text-sm text-zinc-500 hover:text-zinc-900 mb-4 inline-block">&larr; Back to Portfolio</a>
-        <p class="text-sm text-zinc-500 uppercase tracking-wider mb-2">{frontmatter.category}</p>
-        <h1 class="text-4xl md:text-6xl font-bold tracking-tight">{frontmatter.title}</h1>
-      </div>
-      
-      <!-- Hero Image -->
-      <img 
-        src={frontmatter.image} 
-        alt={frontmatter.title} 
-        class="w-full aspect-video object-cover rounded-lg mb-12 bg-zinc-200" 
+    <p class="uppercase tracking-[0.2em] text-xs text-moss mb-3">{frontmatter.category}</p>
+    <h1 class="font-display text-4xl md:text-6xl leading-tight mb-12 max-w-3xl">{frontmatter.title}</h1>
+
+    <div class="aspect-video overflow-hidden bg-plaster-dim mb-14">
+      <img
+        src={frontmatter.image}
+        alt={frontmatter.title}
+        class="w-full h-full object-cover"
       />
-      
-      <!-- Markdown Content Injection Point -->
-      <div class="text-lg leading-relaxed text-zinc-700 max-w-3xl">
-        <slot />
-      </div>
+    </div>
 
-    </main>
-
-  </body>
-</html>
+    <div class="prose-content text-lg leading-relaxed text-ink-soft max-w-2xl">
+      <slot />
+    </div>
+  </main>
+</SiteLayout>

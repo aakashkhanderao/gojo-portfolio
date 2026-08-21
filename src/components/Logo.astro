@@ -1,0 +1,19 @@
+---
+// TEMPORARY WORDMARK — swap this file's markup for the real GOJO Designs
+// logo SVG when it's ready. Keep the component interface (the `class`
+// prop) so nothing else in the site needs to change.
+interface Props {
+  class?: string;
+}
+const { class: className = "" } = Astro.props;
+---
+<span class={`inline-flex items-center gap-2.5 font-display ${className}`}>
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" class="shrink-0" aria-hidden="true">
+    <path d="M1 1V7M1 1H7" stroke="currentColor" stroke-width="1.4" />
+    <path d="M19 19V13M19 19H13" stroke="currentColor" stroke-width="1.4" />
+  </svg>
+  <span class="leading-none">
+    <span class="block text-[1.35em] tracking-tight">GOJO</span>
+    <span class="block text-[0.32em] tracking-[0.35em] uppercase text-ink-soft -mt-0.5">Designs</span>
+  </span>
+</span>
